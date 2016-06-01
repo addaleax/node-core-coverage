@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "istanbul": "^0.4.3",
+    "istanbul-merge": "^1.1.0"
+  }
+}
