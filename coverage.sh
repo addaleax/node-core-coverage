@@ -48,7 +48,11 @@ make -j8
 
 echo "Testing..." >&2
 ./node -v
-make -j8 test
+
+# This corresponds to `make test` up to addition of `internet` and removal
+# of `message`.
+python tools/test.py --mode=release -J \
+  addon doctool known_issues internet parallel pummel sequential
 
 echo "Gathering coverage..." >&2
 mkdir -p coverage

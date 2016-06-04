@@ -123,36 +123,6 @@ index 5aefdc3bcee5..750c134d33ab 100644
  }
  exports.leakedGlobals = leakedGlobals;
  
-diff --git a/Makefile b/Makefile
-index 9a5bbf2f79c4..a4665445c5c5 100644
---- a/Makefile
-+++ b/Makefile
-@@ -118,14 +118,14 @@ test: all
- 	$(MAKE) build-addons
- 	$(MAKE) cctest
- 	$(PYTHON) tools/test.py --mode=release -J \
--		addon doctool known_issues message parallel sequential
-+		addon doctool known_issues parallel sequential
- 	$(MAKE) lint
- 
- test-parallel: all
- 	$(PYTHON) tools/test.py --mode=release parallel -J
- 
- test-valgrind: all
--	$(PYTHON) tools/test.py --mode=release --valgrind sequential parallel message
-+	$(PYTHON) tools/test.py --mode=release --valgrind sequential parallel
- 
- test/gc/node_modules/weak/build/Release/weakref.node: $(NODE_EXE)
- 	$(NODE) deps/npm/node_modules/node-gyp/bin/node-gyp rebuild \
-@@ -183,7 +183,7 @@ test-all-valgrind: test-build
- test-ci: | build-addons
- 	$(PYTHON) tools/test.py $(PARALLEL_ARGS) -p tap --logfile test.tap \
- 		--mode=release --flaky-tests=$(FLAKY_TESTS) \
--		$(TEST_CI_ARGS) addons doctool known_issues message parallel sequential
-+		$(TEST_CI_ARGS) addons doctool known_issues parallel sequential
- 
- test-release: test-build
- 	$(PYTHON) tools/test.py --mode=release
 diff --git a/test/parallel/test-fs-sync-fd-leak.js b/test/parallel/test-fs-sync-fd-leak.js
 index f7cfd25f4b9b..80ad8cf6b705 100644
 --- a/test/parallel/test-fs-sync-fd-leak.js
