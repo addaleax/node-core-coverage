@@ -1,26 +1,7 @@
+
 {
-  "name": "node-core-coverage",
-  "description": "Test Coverage for the Node.js Core",
-  "version": "1.0.0",
-  "author": "SEE AUTHORS.md",
-  "bugs": {
-    "url": "https://github.com/addaleax/node-core-coverage/issues"
-  },
   "dependencies": {
     "istanbul": "^0.4.3",
     "istanbul-merge": "^1.1.0"
-  },
-  "devDependencies": {
-    "fixpack": "^2.3.1"
-  },
-  "homepage": "https://github.com/addaleax/node-core-coverage#readme",
-  "license": "SEE LICENSE.md",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/addaleax/node-core-coverage"
-  },
-  "scripts": {
-    "fix": "fixpack"
   }
 }
