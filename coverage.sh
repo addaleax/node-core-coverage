@@ -41,9 +41,9 @@ export PATH="$(pwd):$PATH"
 if [ ! -x "$SRCDIR/node_modules/.bin/istanbul" ] || \
    [ ! -x "$SRCDIR/node_modules/.bin/istanbul-merge" ]; then
   echo "Building, without lib/ coverage..." >&2
-  ./node -v
   ./configure
   $MAKE
+  ./node -v
 
   cd "$SRCDIR"
 
