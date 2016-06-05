@@ -13,7 +13,8 @@ Node Code Coverage allow us to view the test coverage in the [Node.js Core](http
 - GNU Make 3.81 or newer
 
 ### Running
-- `./coverage.sh`
+1 - `./coverage.sh`
+2 - `./generate-index-html.py`
 
 ## Contributing
 // TODO
