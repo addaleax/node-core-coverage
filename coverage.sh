@@ -65,10 +65,9 @@ make -j8
 echo "Testing..." >&2
 ./node -v
 
-# This corresponds to `make test` up to addition of `internet` and removal
-# of `message`.
+# This corresponds to `make test` up to removal of `message`.
 python tools/test.py --mode=release -J \
-  addon doctool known_issues internet parallel sequential
+  addon doctool known_issues pseudo-tty parallel sequential
 
 echo "Gathering coverage..." >&2
 mkdir -p coverage
@@ -79,10 +78,22 @@ mkdir -p coverage
   -r Release/obj.target/node --html --html-detail \
   -o ../coverage/cxxcoverage.html)
 
+OUTDIR="$ORIGWD/out"
 COMMIT_ID=$(git rev-parse --short=12 HEAD)
-OUTFILE="$ORIGWD/coverage-$COMMIT_ID.tar.xz"
-tar cJvvf "$OUTFILE" coverage/
+
+mkdir -p "$OUTDIR"
+cp -rv coverage "$OUTDIR/coverage-$COMMIT_ID"
+
+JSCOVERAGE=$(grep -B1 Lines coverage/index.html | \
+  head -n1 | grep -o '[0-9\.]*')
+CXXCOVERAGE=$(grep -A3 Lines coverage/cxxcoverage.html | \
+  grep style|grep -o '[0-9\.]*')
+
+echo "JS Coverage: $JSCOVERAGE %"
+echo "C++ Coverage: $CXXCOVERAGE %"
+
+NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+echo "$JSCOVERAGE,$CXXCOVERAGE,$NOW,$COMMIT_ID" >> "$OUTDIR/index.csv"
 
 cd "$ORIGWD"
-
-echo "$OUTFILE"

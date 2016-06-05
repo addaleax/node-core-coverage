@@ -270,3 +270,6 @@ tmp
 *.tar.xz
 
 workdir
+coverage-*/
+index.csv
+out/
