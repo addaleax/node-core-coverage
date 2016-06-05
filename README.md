@@ -18,6 +18,9 @@ Node Code Coverage allow us to view the test coverage in the [Node.js Core](http
 ## Contributing
 // TODO
 
+Even though this is not an official Node.js project, you should adhere to the
+[Node.js Code of Conduct](https://github.com/nodejs/node/blob/master/CODE_OF_CONDUCT.md).
+
 ## Authors
 [Authors.md](./AUTHORS.md)
 
