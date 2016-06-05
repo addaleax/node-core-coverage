@@ -81,7 +81,7 @@ mkdir -p coverage
   -o ../coverage/cxxcoverage.html)
 
 OUTDIR="$ORIGWD/out"
-COMMIT_ID=$(git rev-parse --short=12 HEAD)
+COMMIT_ID=$(git rev-parse --short=16 HEAD)
 
 mkdir -p "$OUTDIR"
 cp -rv coverage "$OUTDIR/coverage-$COMMIT_ID"
