@@ -60,6 +60,10 @@ echo "Instrumenting code in lib/..." >&2
 "$SRCDIR/node_modules/.bin/istanbul" instrument lib/ -o lib_/
 sed -e s~"'"lib/~"'"lib_/~g -i~ node.gyp
 
+echo "Removing old coverage files" >&2
+rm -rf out/Release/.coverage
+rm out/Release/obj.target/node/src/*.gcda
+
 echo "Building, with lib/ coverage..." >&2
 ./configure
 $MAKE
