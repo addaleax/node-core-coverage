@@ -5,7 +5,7 @@ SRCDIR="$(cd $(dirname -- ${0%/*}) && pwd)"
 
 JOBS="${JOBS:-4}"
 WORKDIR="${WORKDIR:-$ORIGWD/workdir}"
-MAKE="${MAKE:make -j$JOBS}"
+MAKE="${MAKE:-make -j$JOBS}"
 
 echo "Switching into ${WORKDIR}..." >&2
 mkdir -vp "$WORKDIR"
