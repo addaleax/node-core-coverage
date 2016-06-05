@@ -3,7 +3,9 @@ set -e
 ORIGWD="$(pwd)"
 SRCDIR="$(cd $(dirname -- ${0%/*}) && pwd)"
 
+JOBS="${JOBS:-4}"
 WORKDIR="${WORKDIR:-$ORIGWD/workdir}"
+MAKE="${MAKE:make -j$JOBS}"
 
 echo "Switching into ${WORKDIR}..." >&2
 mkdir -vp "$WORKDIR"
@@ -41,7 +43,7 @@ if [ ! -x "$SRCDIR/node_modules/.bin/istanbul" ] || \
   echo "Building, without lib/ coverage..." >&2
   ./node -v
   ./configure
-  make -j8
+  $MAKE
 
   cd "$SRCDIR"
 
@@ -60,7 +62,7 @@ sed -e s~"'"lib/~"'"lib_/~g -i~ node.gyp
 
 echo "Building, with lib/ coverage..." >&2
 ./configure
-make -j8
+$MAKE
 
 echo "Testing..." >&2
 ./node -v
