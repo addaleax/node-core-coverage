@@ -34,7 +34,6 @@ with open('out/index.html', 'w') as out:
     </div>
   </header>
   <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">Node.js Core test coverage</span>
     <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="https://github.com/nodejs/node">Node.js Core</a>
         <a class="mdl-navigation__link" href="https://github.com/addaleax/node-core-coverage">Project</a>
