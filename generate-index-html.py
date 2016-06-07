@@ -57,11 +57,11 @@ with open('out/index.html', 'w') as out:
             <th>C++ Coverage</th>
           </tr>
         </thead>
+      <tbody>
 ''')
   for line in reversed(index_csv):
     jscov, cxxcov, date, sha = line.split(',')
     out.write('''
-      <tbody>
           <tr>
             <td>{0}</td>
             <td><a href="https://github.com/nodejs/node/commit/{1}">{1}</a></td>
