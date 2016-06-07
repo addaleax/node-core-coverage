@@ -6,7 +6,6 @@ export JOBS=8
 mkdir -p out
 if ./coverage.sh > "$LOGFILE" 2>&1; then
   ./generate-index-html.py
-  cp style.css out/style.css
 else
   cat "$LOGFILE"
 fi
