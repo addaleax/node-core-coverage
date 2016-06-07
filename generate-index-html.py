@@ -15,7 +15,7 @@ with open('out/index.html', 'w') as out:
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.yellow-indigo.min.css" />
-    <style media="screen" type"text/css">
+    <style media="screen" type="text/css">
       .table-container {
         display: flex;
         justify-content: center;
