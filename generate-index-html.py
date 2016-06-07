@@ -15,7 +15,13 @@ with open('out/index.html', 'w') as out:
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue-indigo.min.css" /> 
-    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <style media="screen" type"text/css">
+      .table-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+      }
+    </style>
   </head>
   <body>
 
