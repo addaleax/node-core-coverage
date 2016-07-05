@@ -73,7 +73,7 @@ echo "Testing..." >&2
 
 # This corresponds to `make test` up to removal of `message`.
 python tools/test.py --mode=release -J \
-  addon doctool known_issues pseudo-tty parallel sequential
+  addons doctool known_issues pseudo-tty parallel sequential
 
 echo "Gathering coverage..." >&2
 mkdir -p coverage
