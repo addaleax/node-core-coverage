@@ -95,7 +95,7 @@ cp -rv coverage "$OUTDIR/coverage-$COMMIT_ID"
 JSCOVERAGE=$(grep -B1 Lines coverage/index.html | \
   head -n1 | grep -o '[0-9\.]*')
 CXXCOVERAGE=$(grep -A3 Lines coverage/cxxcoverage.html | \
-  grep style|grep -o '[0-9\.]*')
+  grep style | grep -o '[0-9]\{1,3\}\.[0-9]\{1,2\}')
 
 echo "JS Coverage: $JSCOVERAGE %"
 echo "C++ Coverage: $CXXCOVERAGE %"
