@@ -38,7 +38,7 @@ export PATH="$(pwd):$PATH"
 
 # if we don't have our npm dependencies available, build node and fetch them
 # with npm
-if [ ! -x "$SRCDIR/node_modules/.bin/istanbul" ] || \
+if [ ! -x "$SRCDIR/node_modules/.bin/nyc" ] || \
    [ ! -x "$SRCDIR/node_modules/.bin/istanbul-merge" ]; then
   echo "Building, without lib/ coverage..." >&2
   ./configure
@@ -47,17 +47,17 @@ if [ ! -x "$SRCDIR/node_modules/.bin/istanbul" ] || \
 
   cd "$SRCDIR"
 
-  # get istanbul
-  node "$WORKDIR/node/deps/npm" install
+  # get nyc + istanbul-merge
+  ./node "$WORKDIR/node/deps/npm" install
 
-  test -x "$SRCDIR/node_modules/.bin/istanbul"
+  test -x "$SRCDIR/node_modules/.bin/nyc"
   test -x "$SRCDIR/node_modules/.bin/istanbul-merge"
 fi
 
 cd "$WORKDIR/node"
 
 echo "Instrumenting code in lib/..." >&2
-"$SRCDIR/node_modules/.bin/istanbul" instrument lib/ -o lib_/
+"$SRCDIR/node_modules/.bin/nyc" instrument lib/ lib_/
 sed -e s~"'"lib/~"'"lib_/~g -i~ node.gyp
 
 echo "Removing old coverage files" >&2
@@ -77,10 +77,11 @@ python tools/test.py --mode=release -J \
   addons doctool known_issues pseudo-tty parallel sequential
 
 echo "Gathering coverage..." >&2
-mkdir -p coverage
-"$SRCDIR/node_modules/.bin/istanbul-merge" --out coverage/libcov.json \
+mkdir -p coverage .cov_tmp
+"$SRCDIR/node_modules/.bin/istanbul-merge" --out .cov_tmp/libcov.json \
   'out/Release/.coverage/coverage-*.json'
-"$SRCDIR/node_modules/.bin/istanbul" report --include coverage/libcov.json html
+(cd lib && "$SRCDIR/node_modules/.bin/nyc" report \
+  --temp-directory "$(pwd)/../.cov_tmp" -r html --report-dir "../coverage")
 (cd out && "$WORKDIR/gcovr/scripts/gcovr" --gcov-exclude='.*deps' --gcov-exclude='.*usr' -v \
   -r Release/obj.target/node --html --html-detail \
   -o ../coverage/cxxcoverage.html)

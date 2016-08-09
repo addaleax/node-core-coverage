@@ -7,8 +7,8 @@
     "url": "https://github.com/addaleax/node-core-coverage/issues"
   },
   "dependencies": {
-    "istanbul": "^0.4.3",
-    "istanbul-merge": "^1.1.0"
+    "istanbul-merge": "^1.1.0",
+    "nyc": "^7.1.0"
   },
   "homepage": "https://github.com/addaleax/node-core-coverage#readme",
   "license": "MIT",
