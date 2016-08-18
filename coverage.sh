@@ -48,7 +48,7 @@ if [ ! -x "$SRCDIR/node_modules/.bin/nyc" ] || \
   cd "$SRCDIR"
 
   # get nyc + istanbul-merge
-  "$WORKDIR/node" "$WORKDIR/node/deps/npm" install
+  "$WORKDIR/node/node" "$WORKDIR/node/deps/npm" install
 
   test -x "$SRCDIR/node_modules/.bin/nyc"
   test -x "$SRCDIR/node_modules/.bin/istanbul-merge"
